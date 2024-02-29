@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pyramid-api"
+version = "0.1.0"
+description = ""
+authors = ["usiqueira"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+psycopg2-binary = "^2.9.9"
+python-decouple = "^3.8"
+pytest = "^8.0.0"
+passlib = "^1.7.4"
+python-jose = "^3.3.0"
+pyramid = "^2.0.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,49 @@
+version: "3.1"
+
+services:
+  pyramid_app:
+    container_name: 'pyramid_app'
+    build: 
+      context: .
+    ports:
+      - 6543:6543
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env
+    command: sh -c "python main.py"
+    depends_on:
+      - postgresql-pyramid-dev
+
+
+  postgresql-pyramid:
+    image: postgres
+    container_name: postgresql-pyramid
+    ports:
+      - 5432:5432
+    env_file:
+      - ./.env
+    volumes:
+      - /var/cache/postgres_pyramid_data:/var/lib/postgresql/data
+
+
+  postgresql-pyramid-dev:
+    image: postgres
+    container_name: postgresql-pyramid-dev
+    ports:
+      - 5433:5432
+    env_file:
+      - ./.env
+    volumes:
+      - /var/cache/postgres_pyramid_dev_data:/var/lib/postgresql/data
+
+
+  pgadmin-pyramid:
+    image: dpage/pgadmin4
+    container_name: pgadmin-pyramid
+    env_file:
+      - ./.env
+    ports:
+      - 5050:80
+    depends_on:
+      - postgresql-pyramid
