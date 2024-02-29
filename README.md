@@ -1,3 +1,5 @@
+![tests](img/pyramid.png)
+
 #Multilingual Content (Portuguese, English)
 
 API Pyramid com Banco de Dados (Sem ORM) e Testes com Pytest
@@ -11,4 +13,3 @@ English
 This is an example of building a RESTful API using the Pyramid framework with the Postgres database.<br> 
 The project demonstrates how to set up routes, handle requests, and interact with a database using raw SQL, along with including automated tests using Pytest.
 
-![tests](img/pyramid.png)
