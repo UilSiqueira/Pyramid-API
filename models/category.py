@@ -4,6 +4,12 @@ from models.base_model import BaseModel
 class Category(BaseModel):
 
     def add(self, name: str, slug: str):
+	param = (slug, )
+        query = 'SELECT * FROM categories WHERE slug=%s;'
+        category = self.db_session.execute(query, param)
+        if category:
+             raise HTTPBadRequest(detail="Category already existis")
+
         params = (name, slug)
         query = "INSERT INTO categories (name, slug) VALUES (%s, %s);"
         self.db_session.execute(query, params)
